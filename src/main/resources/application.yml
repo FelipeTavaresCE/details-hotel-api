@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: details-hotel
+
+server:
+  error:
+    include-exception: false
+    include-stacktrace: NEVER
+
+  servlet:
+    context-path: /details-hotel
+  port: 8080
+
+dados:
+  api:
+    comissao: 0.70
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 30000
+        readTimeout: 30000
+        loggerLevel: full
+
+logging:
+  level:
+    br:
+      com:
+        cvc:
+          consulta:
+            dados:
+              hotel:
+                client:
+                  ParceirosIntegracaoClient: DEBUG
+
+parceirosUrl:
+  api:
+    url:  https://cvcbackendhotel.herokuapp.com/hotels/
+    endpoint:
+      city: avail/
+
+client:
+  http:
+    defaultMaxPerRoute: 20
+    maxTotal: 200
+    connectionRequestTimeout: 240000
+    connectTimeout: 240000
+    socketTimeout: 240000
